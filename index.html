@@ -581,41 +581,6 @@
             50% { transform: scale(1.05); }
         }
 
-
-        .video-outputs {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .video-container {
-            background: rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(0, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .video-container h3 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--neon-cyan);
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-        }
-
-        .video-placeholder {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(255, 0, 255, 0.05));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 0.9rem;
-        }
-
         .processing-overlay {
             position: fixed;
             top: 0;
@@ -658,8 +623,7 @@
 
 
         @media (max-width: 768px) {
-            .battle-arena,
-            .video-outputs {
+            .battle-arena {
                 grid-template-columns: 1fr;
             }
 
@@ -824,17 +788,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="video-outputs" id="videoOutputs" style="display: none;">
-            <div class="video-container">
-                <h3>📹 Sequential Output</h3>
-                <div class="video-placeholder">Video preview will appear here</div>
-            </div>
-            <div class="video-container">
-                <h3>⚡ Parallel Output</h3>
-                <div class="video-placeholder">Video preview will appear here</div>
-            </div>
-        </div>
     </div>
 
     <div class="processing-overlay" id="processingOverlay">
@@ -919,7 +872,6 @@
             document.getElementById('sequentialFighter').classList.remove('winner');
             document.getElementById('parallelFighter').classList.remove('winner');
             document.getElementById('resultsPanel').style.display = 'none';
-            document.getElementById('videoOutputs').style.display = 'none';
 
             const presetMultipliers = {
                 'ultrafast': 1,
@@ -1009,11 +961,6 @@
             document.getElementById('speedupValue').textContent = speedup.toFixed(2) + 'x';
             document.getElementById('timeSaved').textContent = formatDuration(Math.floor(timeSaved));
             document.getElementById('efficiency').textContent = efficiency.toFixed(1) + '%';
-
-
-            setTimeout(() => {
-                document.getElementById('videoOutputs').style.display = 'grid';
-            }, 500);
         }
 
 
