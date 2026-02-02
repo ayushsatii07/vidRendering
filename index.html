@@ -47,7 +47,6 @@
             z-index: 1;
         }
 
-
         .orb {
             position: fixed;
             border-radius: 50%;
@@ -79,7 +78,6 @@
             0%, 100% { transform: translate(0, 0) scale(1); }
             50% { transform: translate(30px, -30px) scale(1.1); }
         }
-
 
         header {
             text-align: center;
@@ -126,7 +124,6 @@
             letter-spacing: 2px;
         }
 
-        /* Control Panel */
         .control-panel {
             background: rgba(26, 26, 46, 0.8);
             backdrop-filter: blur(10px);
@@ -191,7 +188,6 @@
             border-color: var(--neon-cyan);
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
         }
-
 
         .file-upload-wrapper {
             position: relative;
@@ -337,7 +333,6 @@
             position: relative;
             z-index: 1;
         }
-
 
         .battle-arena {
             display: grid;
@@ -507,7 +502,6 @@
             100% { transform: translateX(100%); }
         }
 
-
         .results-panel {
             background: rgba(26, 26, 46, 0.8);
             backdrop-filter: blur(10px);
@@ -518,6 +512,7 @@
             animation: fadeIn 1s ease-out 0.9s both;
             position: relative;
             overflow: hidden;
+            margin-bottom: 40px;
         }
 
         .results-panel::before {
@@ -581,6 +576,157 @@
             50% { transform: scale(1.05); }
         }
 
+        /* Video Output Styles */
+        .video-outputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .video-container {
+            background: rgba(26, 26, 46, 0.6);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .video-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 255, 255, 0.3);
+            border-color: var(--neon-cyan);
+        }
+
+        .video-container.sequential {
+            border-color: rgba(255, 100, 100, 0.3);
+        }
+
+        .video-container.sequential:hover {
+            border-color: #ff6464;
+            box-shadow: 0 15px 40px rgba(255, 100, 100, 0.3);
+        }
+
+        .video-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .video-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .video-container.sequential .video-title {
+            color: #ff6464;
+        }
+
+        .download-btn {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            padding: 8px 20px;
+            font-size: 0.85rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: var(--neon-cyan);
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        .video-container.sequential .download-btn {
+            border-color: #ff6464;
+            color: #ff6464;
+        }
+
+        .video-container.sequential .download-btn:hover {
+            background: #ff6464;
+            color: #fff;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .video-container.sequential .video-wrapper {
+            border-color: rgba(255, 100, 100, 0.2);
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.9rem;
+            gap: 15px;
+        }
+
+        .video-placeholder-icon {
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+
+        .video-info {
+            margin-top: 15px;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+
+        .video-info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .video-info-row:last-child {
+            border-bottom: none;
+        }
+
+        .video-info-label {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .video-info-value {
+            color: var(--neon-cyan);
+            font-weight: 600;
+        }
+
+        .video-container.sequential .video-info-value {
+            color: #ff6464;
+        }
+
         .processing-overlay {
             position: fixed;
             top: 0;
@@ -621,9 +767,9 @@
             font-family: 'Orbitron', sans-serif;
         }
 
-
         @media (max-width: 768px) {
-            .battle-arena {
+            .battle-arena,
+            .video-outputs {
                 grid-template-columns: 1fr;
             }
 
@@ -648,7 +794,6 @@
         </header>
 
         <div class="control-panel">
-
             <div class="control-row">
                 <div class="control-group full-width">
                     <label>📹 Upload Your Video</label>
@@ -678,7 +823,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div class="control-row">
                 <div class="control-group">
@@ -715,7 +859,6 @@
                     </select>
                 </div>
             </div>
-
 
             <div class="control-row">
                 <button id="processBtn" onclick="startProcessing()" disabled>
@@ -788,6 +931,73 @@
                 </div>
             </div>
         </div>
+
+        <!-- Video Outputs Section -->
+        <div class="video-outputs" id="videoOutputs" style="display: none;">
+            <!-- Sequential Output -->
+            <div class="video-container sequential">
+                <div class="video-header">
+                    <div class="video-title">
+                        ⏳ Sequential Output
+                    </div>
+                    <button class="download-btn" onclick="downloadVideo('sequential')">
+                        <span>⬇ Download</span>
+                    </button>
+                </div>
+                <div class="video-wrapper">
+                    <video id="sequentialVideo" controls>
+                        <source id="sequentialSource" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <div class="video-info-row">
+                        <span class="video-info-label">Processing Method:</span>
+                        <span class="video-info-value">Sequential</span>
+                    </div>
+                    <div class="video-info-row">
+                        <span class="video-info-label">Time Taken:</span>
+                        <span class="video-info-value" id="seqVideoTime">--</span>
+                    </div>
+                    <div class="video-info-row">
+                        <span class="video-info-label">Filter Applied:</span>
+                        <span class="video-info-value" id="seqVideoFilter">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parallel Output -->
+            <div class="video-container">
+                <div class="video-header">
+                    <div class="video-title">
+                        ⚡ Parallel Output
+                    </div>
+                    <button class="download-btn" onclick="downloadVideo('parallel')">
+                        <span>⬇ Download</span>
+                    </button>
+                </div>
+                <div class="video-wrapper">
+                    <video id="parallelVideo" controls>
+                        <source id="parallelSource" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <div class="video-info-row">
+                        <span class="video-info-label">Processing Method:</span>
+                        <span class="video-info-value">Parallel</span>
+                    </div>
+                    <div class="video-info-row">
+                        <span class="video-info-label">Time Taken:</span>
+                        <span class="video-info-value" id="parVideoTime">--</span>
+                    </div>
+                    <div class="video-info-row">
+                        <span class="video-info-label">Filter Applied:</span>
+                        <span class="video-info-value" id="parVideoFilter">--</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="processing-overlay" id="processingOverlay">
@@ -800,7 +1010,10 @@
     <script>
         let uploadedVideo = null;
         let videoDuration = 0;
-
+        let processedVideoURLs = {
+            sequential: null,
+            parallel: null
+        };
 
         function handleFileUpload(event) {
             const file = event.target.files[0];
@@ -808,11 +1021,9 @@
 
             uploadedVideo = file;
 
-
             document.getElementById('fileName').textContent = file.name;
             document.getElementById('fileSize').textContent = formatFileSize(file.size);
             document.getElementById('fileInfo').classList.add('active');
-
 
             const video = document.createElement('video');
             video.preload = 'metadata';
@@ -823,13 +1034,11 @@
                 document.getElementById('fileDuration').textContent = formatDuration(videoDuration);
                 updateSegmentCount();
                 
-
                 document.getElementById('processBtn').disabled = false;
             }
 
             video.src = URL.createObjectURL(file);
         }
-
 
         function updateSegmentCount() {
             const segmentDuration = parseInt(document.getElementById('segmentDuration').value);
@@ -868,10 +1077,10 @@
             document.getElementById('processingOverlay').classList.add('active');
             document.getElementById('processingText').textContent = 'Analyzing video...';
             
-
             document.getElementById('sequentialFighter').classList.remove('winner');
             document.getElementById('parallelFighter').classList.remove('winner');
             document.getElementById('resultsPanel').style.display = 'none';
+            document.getElementById('videoOutputs').style.display = 'none';
 
             const presetMultipliers = {
                 'ultrafast': 1,
@@ -902,10 +1111,8 @@
                 document.getElementById('processingOverlay').classList.remove('active');
                 
                 animateProcessing('sequential', seqTotal, segments, () => {
-
                     animateProcessing('parallel', parTotal, segments, () => {
-
-                        showResults(speedup, efficiency, timeSaved, seqTotal, parTotal);
+                        showResults(speedup, efficiency, timeSaved, seqTotal, parTotal, filterType);
                     });
                 });
             }, 1500);
@@ -950,10 +1157,8 @@
             }, stepTime);
         }
 
-        function showResults(speedup, efficiency, timeSaved, seqTime, parTime) {
-
+        function showResults(speedup, efficiency, timeSaved, seqTime, parTime, filterType) {
             document.getElementById('parallelFighter').classList.add('winner');
-
 
             const resultsPanel = document.getElementById('resultsPanel');
             resultsPanel.style.display = 'block';
@@ -961,9 +1166,55 @@
             document.getElementById('speedupValue').textContent = speedup.toFixed(2) + 'x';
             document.getElementById('timeSaved').textContent = formatDuration(Math.floor(timeSaved));
             document.getElementById('efficiency').textContent = efficiency.toFixed(1) + '%';
+
+            // Show video outputs with the uploaded video
+            setTimeout(() => {
+                displayVideoOutputs(seqTime, parTime, filterType);
+            }, 500);
         }
 
+        function displayVideoOutputs(seqTime, parTime, filterType) {
+            // Create object URLs for the uploaded video (simulating processed output)
+            const videoURL = URL.createObjectURL(uploadedVideo);
+            
+            // Set video sources
+            document.getElementById('sequentialSource').src = videoURL;
+            document.getElementById('parallelSource').src = videoURL;
+            
+            // Load videos
+            document.getElementById('sequentialVideo').load();
+            document.getElementById('parallelVideo').load();
+            
+            // Store URLs for download
+            processedVideoURLs.sequential = videoURL;
+            processedVideoURLs.parallel = videoURL;
+            
+            // Update video info
+            document.getElementById('seqVideoTime').textContent = seqTime.toFixed(1) + 's';
+            document.getElementById('parVideoTime').textContent = parTime.toFixed(1) + 's';
+            document.getElementById('seqVideoFilter').textContent = filterType.charAt(0).toUpperCase() + filterType.slice(1);
+            document.getElementById('parVideoFilter').textContent = filterType.charAt(0).toUpperCase() + filterType.slice(1);
+            
+            // Show video outputs section
+            document.getElementById('videoOutputs').style.display = 'grid';
+        }
 
+        function downloadVideo(type) {
+            const url = processedVideoURLs[type];
+            if (!url) {
+                alert('No video available for download');
+                return;
+            }
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `output_${type}_${Date.now()}.mp4`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        // Drag and drop functionality
         const fileLabel = document.querySelector('.file-upload-label');
         
         fileLabel.addEventListener('dragover', (e) => {
